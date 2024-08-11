@@ -82,4 +82,12 @@ class CoinListViewTests: XCTestCase {
     // then
     XCTAssertTrue(intent.updateSearchCalled)
   }
+
+  func testOnInviteFriendTapped() {
+    // when
+    sut.onInviteFriendTapped()
+
+    // then
+    XCTAssertTrue(intent.attachShareSheetCalled)
+  }
 }

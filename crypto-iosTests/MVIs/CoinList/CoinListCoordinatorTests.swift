@@ -110,5 +110,13 @@ class CoinListCoordinatorTests: XCTestCase {
     XCTAssertFalse(sut.childCoordinators.first is CoinListSearchCoordinator)
     XCTAssertFalse(containerView.subviews.first is CoinListSearchView)
   }
+
+  func testAttachShareSheet() {
+    // when
+    sut.attachShareSheet()
+
+    // then
+    XCTAssertTrue(navigationController.presentViewController is UIActivityViewController)
+  }
 }
 

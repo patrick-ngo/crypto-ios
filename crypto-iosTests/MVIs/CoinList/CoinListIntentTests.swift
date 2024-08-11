@@ -94,6 +94,18 @@ class CoinListIntentTests: XCTestCase {
     XCTAssertEqual(searchTextRelay.value, "test_search_text")
   }
 
+  func testAttachShareSheet() {
+    // given
+    let containerView = UIView()
+    sut.bind(to: view)
+
+    // when
+    sut.attachShareSheet()
+
+    // then
+    XCTAssertTrue(coordinator.attachShareSheetCalled)
+  }
+
   func testUpdateSearch_When_SearchTextEmpty() {
     // given
     let containerView = UIView()
