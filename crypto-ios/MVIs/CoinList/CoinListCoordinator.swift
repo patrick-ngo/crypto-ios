@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CoinListCoordinatorInput: Coordinator {
-  func goToCoinDetail(with movie: Coin)
+  func goToCoinDetail(with coin: Coin)
   func attachSearchViewIfNeeded(with searchTextRelay: ReadonlyBehaviorRelay<String>,
                                 containerView: UIView)
   func attachShareSheet()

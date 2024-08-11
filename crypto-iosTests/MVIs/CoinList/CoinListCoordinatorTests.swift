@@ -1,5 +1,5 @@
 //
-//  MovieListCoordinator.swift
+//  CoinListCoordinatorTests.swift
 //  crypto-ios
 //
 //  Created by Patrick Ngo on 2024-08-11.
@@ -64,7 +64,7 @@ class CoinListCoordinatorTests: XCTestCase {
     XCTAssertTrue(parentCoordinator.finishCalled)
   }
   
-  func testGoToMovieDetail() {
+  func testGoToCoinDetail() {
     // given
     let initialNumChildCoordinators = sut.childCoordinators.count
 

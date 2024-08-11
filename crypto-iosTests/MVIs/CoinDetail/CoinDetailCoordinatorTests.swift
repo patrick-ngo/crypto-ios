@@ -1,9 +1,9 @@
 //
-//  MovieDetailCoordinatorTests.swift
-//  movies-iosTests
+//  CoinDetailCoordinatorTests.swift
+//  crypto-ios
 //
-//  Created by Patrick Ngo on 2022-05-02.
-//  Copyright © 2022 patrickngo. All rights reserved.
+//  Created by Patrick Ngo on 2024-08-11.
+//  Copyright © 2024 patrickngo. All rights reserved.
 //
 
 import XCTest

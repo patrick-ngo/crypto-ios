@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CoinListSearchCoordinatorInput: Coordinator {
-  func goToCoinDetail(with movie: Coin)
+  func goToCoinDetail(with coin: Coin)
 }
 
 final class CoinListSearchCoordinator: CoinListSearchCoordinatorInput {

@@ -1,5 +1,5 @@
 //
-//  MovieListIntentTests.swift
+//  CoinListIntentTests.swift
 //  crypto-ios
 //
 //  Created by Patrick Ngo on 2024-08-11.

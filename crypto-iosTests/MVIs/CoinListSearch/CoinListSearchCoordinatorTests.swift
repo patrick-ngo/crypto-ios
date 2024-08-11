@@ -73,7 +73,7 @@ class CoinListSearchCoordinatorTests: XCTestCase {
     XCTAssertTrue(containerView.isHidden)
   }
 
-  func testGoToMovieDetail() {
+  func testGoToCoinDetail() {
     // given
     let initialNumChildCoordinators = sut.childCoordinators.count
 
