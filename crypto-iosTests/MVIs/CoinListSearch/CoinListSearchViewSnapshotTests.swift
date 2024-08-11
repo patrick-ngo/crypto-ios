@@ -24,7 +24,7 @@ class CoinListSearchViewSnapshotTests: SnapshotTestCase {
     super.tearDown()
   }
 
-  func testCoinDetailView_With_InitialState() {
+  func testCoinListSearchView_With_InitialState() {
     // when
     sut.update(with: .initialState,
                prevState: nil)
@@ -33,7 +33,17 @@ class CoinListSearchViewSnapshotTests: SnapshotTestCase {
     verifyViewWithTolerance(sut)
   }
 
-  func testCoinDetailView_With_Details() {
+  func testCoinListSearchView_With_EmptySearchResults() {
+    // when
+    sut.update(with: CoinListSearchState(prevState: .initialState,
+                                         coinViewModels: []),
+               prevState: .initialState)
+
+    // then
+    verifyViewWithTolerance(sut)
+  }
+
+  func testCoinListSearchView_With_Details() {
     // when
     sut.update(with: CoinListSearchState(prevState: .initialState,
                                          hasNext: false,

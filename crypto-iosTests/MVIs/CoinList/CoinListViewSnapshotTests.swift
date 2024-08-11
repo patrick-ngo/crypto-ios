@@ -23,7 +23,7 @@ class CoinListViewSnapshotTests: SnapshotTestCase {
     super.tearDown()
   }
 
-  func testCoinDetailView_With_InitialState() {
+  func testCoinListView_With_InitialState() {
     // when
     sut.update(with: .initialState,
                prevState: nil)
@@ -32,7 +32,17 @@ class CoinListViewSnapshotTests: SnapshotTestCase {
     verifyViewControllerWithTolerance(sut)
   }
 
-  func testCoinDetailView_With_Details() {
+  func testCoinListView_With_Error() {
+    // when
+    sut.update(with: CoinListState(prevState: .initialState,
+                                   isError: true),
+               prevState: .initialState)
+
+    // then
+    verifyViewControllerWithTolerance(sut)
+  }
+
+  func testCoinListView_With_Details() {
     // when
     sut.update(with: CoinListState(prevState: .initialState,
                                    hasNext: false,
