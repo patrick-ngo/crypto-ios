@@ -28,6 +28,7 @@
 		C0B92E8E2C68C22800DF3D02 /* CoinListSearchMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B92E7F2C68C22800DF3D02 /* CoinListSearchMocks.swift */; };
 		C0B92E8F2C68C22800DF3D02 /* CoinListSearchIntentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B92E802C68C22800DF3D02 /* CoinListSearchIntentTests.swift */; };
 		C0B92E922C68C24100DF3D02 /* MockCoinsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B92E912C68C24100DF3D02 /* MockCoinsApiService.swift */; };
+		C0BB69472C68D419009ABE80 /* CoinListInviteFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB69462C68D419009ABE80 /* CoinListInviteFriendCell.swift */; };
 		C0DFDB7E2C68B9F7008C9E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDB7D2C68B9F7008C9E81 /* AppDelegate.swift */; };
 		C0DFDB802C68B9F7008C9E81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDB7F2C68B9F7008C9E81 /* SceneDelegate.swift */; };
 		C0DFDB872C68B9F9008C9E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFDB862C68B9F9008C9E81 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		7251EE3D11B67E3614052D3B /* Pods-crypto-ios-crypto-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-ios-crypto-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-crypto-ios-crypto-iosUITests/Pods-crypto-ios-crypto-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E5CCB42548BF565A128CDA2 /* Pods_crypto_ios_crypto_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto_ios_crypto_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0DC0E2632E948CA3D6E5BF /* Pods-crypto-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-ios.release.xcconfig"; path = "Target Support Files/Pods-crypto-ios/Pods-crypto-ios.release.xcconfig"; sourceTree = "<group>"; };
+		C05270772C68FA6C00118737 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		C0B92E662C68C21000DF3D02 /* MockCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		C0B92E672C68C21000DF3D02 /* MockUINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUINavigationController.swift; sourceTree = "<group>"; };
 		C0B92E682C68C21000DF3D02 /* SnapshotTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTestCase.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		C0B92E7F2C68C22800DF3D02 /* CoinListSearchMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinListSearchMocks.swift; sourceTree = "<group>"; };
 		C0B92E802C68C22800DF3D02 /* CoinListSearchIntentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinListSearchIntentTests.swift; sourceTree = "<group>"; };
 		C0B92E912C68C24100DF3D02 /* MockCoinsApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoinsApiService.swift; sourceTree = "<group>"; };
+		C0BB69462C68D419009ABE80 /* CoinListInviteFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListInviteFriendCell.swift; sourceTree = "<group>"; };
 		C0DFDB7A2C68B9F7008C9E81 /* crypto-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DFDB7D2C68B9F7008C9E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0DFDB7F2C68B9F7008C9E81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +305,7 @@
 		C0DFDB7C2C68B9F7008C9E81 /* crypto-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C05270772C68FA6C00118737 /* TestPlan.xctestplan */,
 				C0DFDBD42C68BBA0008C9E81 /* MVIs */,
 				C0DFDBBB2C68BACF008C9E81 /* API */,
 				C0DFDBCF2C68BB8C008C9E81 /* Models */,
@@ -386,10 +390,10 @@
 		C0DFDBD42C68BBA0008C9E81 /* MVIs */ = {
 			isa = PBXGroup;
 			children = (
-				C0DFDBD52C68BBA0008C9E81 /* CoinList */,
-				C0DFDBDE2C68BBA0008C9E81 /* CoinDetail */,
 				C0DFDBE52C68BBA0008C9E81 /* Root */,
+				C0DFDBD52C68BBA0008C9E81 /* CoinList */,
 				C0DFDBE82C68BBA0008C9E81 /* CoinListSearch */,
+				C0DFDBDE2C68BBA0008C9E81 /* CoinDetail */,
 			);
 			path = MVIs;
 			sourceTree = "<group>";
@@ -397,9 +401,9 @@
 		C0DFDBD52C68BBA0008C9E81 /* CoinList */ = {
 			isa = PBXGroup;
 			children = (
-				C0DFDBD62C68BBA0008C9E81 /* CoinListIntent.swift */,
 				C0DFDBD72C68BBA0008C9E81 /* CoinListCoordinator.swift */,
 				C0DFDBD82C68BBA0008C9E81 /* CoinListViewController.swift */,
+				C0DFDBD62C68BBA0008C9E81 /* CoinListIntent.swift */,
 				C0DFDBD92C68BBA0008C9E81 /* CoinListState.swift */,
 				C0DFDBDA2C68BBA0008C9E81 /* Views */,
 			);
@@ -412,6 +416,7 @@
 				C0DFDBDB2C68BBA0008C9E81 /* CoinListSectionHeaderView.swift */,
 				C0DFDBDC2C68BBA0008C9E81 /* CoinListCell.swift */,
 				C0DFDBDD2C68BBA0008C9E81 /* CoinListTopRankingRowCell.swift */,
+				C0BB69462C68D419009ABE80 /* CoinListInviteFriendCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,9 +424,9 @@
 		C0DFDBDE2C68BBA0008C9E81 /* CoinDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C0DFDBE22C68BBA0008C9E81 /* CoinDetailCoordinator.swift */,
 				C0DFDBE02C68BBA0008C9E81 /* CoinDetailViewController.swift */,
 				C0DFDBE12C68BBA0008C9E81 /* CoinDetailIntent.swift */,
-				C0DFDBE22C68BBA0008C9E81 /* CoinDetailCoordinator.swift */,
 				C0DFDBE32C68BBA0008C9E81 /* CoinDetailState.swift */,
 			);
 			path = CoinDetail;
@@ -439,10 +444,10 @@
 		C0DFDBE82C68BBA0008C9E81 /* CoinListSearch */ = {
 			isa = PBXGroup;
 			children = (
-				C0DFDBE92C68BBA0008C9E81 /* CoinListSearchState.swift */,
 				C0DFDBEA2C68BBA0008C9E81 /* CoinListSearchCoordinator.swift */,
 				C0DFDBEB2C68BBA0008C9E81 /* CoinListSearchView.swift */,
 				C0DFDBEC2C68BBA0008C9E81 /* CoinListSearchIntent.swift */,
+				C0DFDBE92C68BBA0008C9E81 /* CoinListSearchState.swift */,
 			);
 			path = CoinListSearch;
 			sourceTree = "<group>";
@@ -741,6 +746,7 @@
 				C0DFDB7E2C68B9F7008C9E81 /* AppDelegate.swift in Sources */,
 				C0DFDBF52C68BBA0008C9E81 /* CoinDetailViewController.swift in Sources */,
 				C0DFDBFD2C68BBA0008C9E81 /* CoinListSearchCoordinator.swift in Sources */,
+				C0BB69472C68D419009ABE80 /* CoinListInviteFriendCell.swift in Sources */,
 				C0DFDC082C68BBA4008C9E81 /* PriceChangeFormatter.swift in Sources */,
 				C0DFDBF82C68BBA0008C9E81 /* CoinDetailState.swift in Sources */,
 				C0DFDBFE2C68BBA0008C9E81 /* CoinListSearchView.swift in Sources */,

@@ -27,7 +27,7 @@ final class SearchInput: UIView, UITextFieldDelegate {
     didSet {
       inputField.attributedPlaceholder = NSAttributedString(
           string: placeholder ?? "",
-          attributes: [NSAttributedString.Key.foregroundColor: UIColor.Text.darkGrey]
+          attributes: [NSAttributedString.Key.foregroundColor: UIColor.Text.placeholderGrey]
       )
     }
   }

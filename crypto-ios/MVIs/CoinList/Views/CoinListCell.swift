@@ -8,7 +8,14 @@
 
 import UIKit
 
+enum CoinListCellType {
+  case coin
+  case inviteFriend
+}
+
 struct CoinListCellViewModel: Equatable {
+  let type: CoinListCellType
+  let id: String?
   let title: String?
   let symbol: String?
   let logoUrl: String?

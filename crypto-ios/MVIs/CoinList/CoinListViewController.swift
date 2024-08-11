@@ -45,12 +45,13 @@ final class CoinListViewController: UIViewController,
   private lazy var tableView : UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
     tableView.backgroundColor = UIColor.Background.white
-//    tableView.separatorStyle = .none
+    tableView.separatorStyle = .none
     tableView.separatorColor = UIColor.Border.around
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(CoinListTopRankingRowCell.self, forCellReuseIdentifier: String(describing: CoinListTopRankingRowCell.self))
     tableView.register(CoinListCell.self, forCellReuseIdentifier: String(describing: CoinListCell.self))
+    tableView.register(CoinListInviteFriendCell.self, forCellReuseIdentifier: String(describing: CoinListInviteFriendCell.self))
     tableView.register(LoadingCell.self, forCellReuseIdentifier: String(describing: LoadingCell.self))
     tableView.register(ErrorCell.self, forCellReuseIdentifier: String(describing: ErrorCell.self))
     tableView.rowHeight = UITableView.automaticDimension
@@ -147,6 +148,10 @@ final class CoinListViewController: UIViewController,
     intent?.goToCoinDetail(with: index)
   }
 
+  func onInviteFriendTapped() {
+    intent?.attachShareSheet()
+  }
+
   func onSearchTextChanged(with searchText: String) {
     intent?.updateSearch(with: searchText, containerView: searchContainerView)
   }
@@ -225,12 +230,24 @@ final class CoinListViewController: UIViewController,
         }
       }
 
-      let coinListCell = tableView.dequeueReusableCell(withIdentifier: String(describing: CoinListCell.self), for: indexPath)
-      if let coinListCell = coinListCell as? CoinListCell {
-        let viewModel = currentState.coinViewModels[indexPath.row]
-        coinListCell.update(with: viewModel)
+      let viewModel = currentState.coinViewModels[indexPath.row]
+      switch viewModel.type {
+      case .coin:
+        let coinListCell = tableView.dequeueReusableCell(withIdentifier: String(describing: CoinListCell.self), for: indexPath)
+        if let coinListCell = coinListCell as? CoinListCell {
+          let viewModel = currentState.coinViewModels[indexPath.row]
+          coinListCell.update(with: viewModel)
+        }
+        return coinListCell
+      case .inviteFriend:
+        let inviteFriendCell = tableView.dequeueReusableCell(withIdentifier: String(describing: CoinListInviteFriendCell.self), for: indexPath)
+        if let inviteFriendCell = inviteFriendCell as? CoinListInviteFriendCell{
+          inviteFriendCell.onLinkTapped = { [weak self] in
+            self?.onInviteFriendTapped()
+          }
+        }
+        return inviteFriendCell
       }
-      return coinListCell
     }
   }
 

@@ -14,18 +14,19 @@ struct CoinListState: State {
                                           page: 0,
                                           isLoading: true,
                                           isError: false,
-                                          topCoins: [],
+                                          inviteFriendPosition: 5,
+                                          coinsDict: [:],
                                           topCoinViewModels: [],
-                                          coins: [],
                                           coinViewModels: [])
   var hasNext = false
   var page = 0
   var isLoading = false
   var isError = false
-  var topCoins: [Coin] = []
+  var inviteFriendPosition = 0
+  var coinsDict: [String: Coin] = [:]
   var topCoinViewModels: [CoinListCellViewModel] = []
-  var coins: [Coin] = []
   var coinViewModels: [CoinListCellViewModel]
+
 
   var isInitialLoading: Bool {
     return coinViewModels.isEmpty
@@ -39,6 +40,8 @@ extension CoinListState {
        page: Int? = nil,
        isLoading: Bool? = nil,
        isError: Bool? = nil,
+       inviteFriendPosition: Int? = nil,
+       coinsDict: [String: Coin]? = nil,
        topCoins: [Coin]? = nil,
        topCoinViewModels: [CoinListCellViewModel]? = nil,
        coins: [Coin]? = nil,
@@ -47,9 +50,9 @@ extension CoinListState {
     self.page = page ?? prevState.page
     self.isLoading = isLoading ?? prevState.isLoading
     self.isError = isError ?? prevState.isError
-    self.topCoins = topCoins ?? prevState.topCoins
+    self.inviteFriendPosition = inviteFriendPosition ?? prevState.inviteFriendPosition
+    self.coinsDict = coinsDict ?? prevState.coinsDict
     self.topCoinViewModels = topCoinViewModels ?? prevState.topCoinViewModels
-    self.coins = coins ?? prevState.coins
     self.coinViewModels = coinViewModels ?? prevState.coinViewModels
   }
 }

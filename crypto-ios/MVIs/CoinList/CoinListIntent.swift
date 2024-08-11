@@ -19,6 +19,7 @@ protocol CoinListIntentInput {
   func goToCoinDetail(with index: Int)
   func goToTopCoinDetail(with index: Int)
   func updateSearch(with searchText: String, containerView: UIView)
+  func attachShareSheet()
 }
 
 final class CoinListIntent: CoinListIntentInput {
@@ -53,15 +54,23 @@ final class CoinListIntent: CoinListIntentInput {
   }
 
   func goToCoinDetail(with index: Int) {
-    guard currentState.coins.indices.contains(index) else { return }
-    let selectedCoin = currentState.coins[index]
-    coordinator?.goToCoinDetail(with: selectedCoin)
+    guard currentState.coinViewModels.indices.contains(index) else { return }
+    let selectedCoinViewModel = currentState.coinViewModels[index]
+
+    if let id = selectedCoinViewModel.id,
+       let selectedCoin = currentState.coinsDict[id] {
+      coordinator?.goToCoinDetail(with: selectedCoin)
+    }
   }
 
   func goToTopCoinDetail(with index: Int) {
-    guard currentState.topCoins.indices.contains(index) else { return }
-    let selectedCoin = currentState.topCoins[index]
-    coordinator?.goToCoinDetail(with: selectedCoin)
+    guard currentState.topCoinViewModels.indices.contains(index) else { return }
+    let selectedCoinViewModel = currentState.topCoinViewModels[index]
+
+    if let id = selectedCoinViewModel.id,
+       let selectedCoin = currentState.coinsDict[id] {
+      coordinator?.goToCoinDetail(with: selectedCoin)
+    }
   }
 
   func updateSearch(with searchText: String,
@@ -71,6 +80,10 @@ final class CoinListIntent: CoinListIntentInput {
       coordinator?.attachSearchViewIfNeeded(with: searchTextRelay,
                                             containerView: containerView)
     }
+  }
+
+  func attachShareSheet() {
+    coordinator?.attachShareSheet()
   }
 
   func getCoins() {
@@ -85,7 +98,8 @@ final class CoinListIntent: CoinListIntentInput {
   private func fetchCoins(for page: Int) {
     stateDriver.accept(CoinListState(prevState: currentState,
                                      page: page,
-                                     isLoading: true))
+                                     isLoading: true,
+                                     inviteFriendPosition: page == Constants.firstPage ? CoinListState.initialState.inviteFriendPosition : nil))
 
     coinsApiService.fetchCoinList(for: page,
                                   pageSize: Constants.pageSize,
@@ -98,30 +112,39 @@ final class CoinListIntent: CoinListIntentInput {
           let hasNext = this.calculateHasNext(with: totalCount, currentPage: page)
 
           if page == Constants.firstPage {
-            let topCoins =  Array(coins.prefix(Constants.numberOfTopRanking))
-            let topCoinViewModels = topCoins.map { this.getCoinCellViewModel(from: $0) }
-            let firstPageCoins = Array(coins.dropFirst(Constants.numberOfTopRanking))
-            let firstPageCoinViewModels = firstPageCoins.map { this.getCoinCellViewModel(from: $0) }
+            let coinsDict = coins.reduce(into: [String: Coin]()) { dict, coin in
+              dict[coin.uuid] = coin
+            }
+            let topCoinViewModels = Array(coins.prefix(Constants.numberOfTopRanking))
+              .map { this.getCoinCellViewModel(from: $0) }
+            let firstPageCoinViewModels = Array(coins.dropFirst(Constants.numberOfTopRanking))
+              .map { this.getCoinCellViewModel(from: $0) }
+            let (inviteFriendPosition, coinViewModels) = this.insertInviteFriendIfNecessary(coinViewModels: firstPageCoinViewModels)
 
             this.stateDriver.accept(CoinListState(prevState: this.currentState,
                                                   hasNext: hasNext,
                                                   isLoading: false,
                                                   isError: false,
-                                                  topCoins: topCoins,
+                                                  inviteFriendPosition: inviteFriendPosition,
+                                                  coinsDict: coinsDict,
                                                   topCoinViewModels: topCoinViewModels,
-                                                  coins: firstPageCoins,
-                                                  coinViewModels: firstPageCoinViewModels))
+                                                  coinViewModels: coinViewModels))
           } else {
-            let updatedCoins = page == Constants.firstPage ? coins : this.currentState.coins + coins
-            let coinViewModels = coins.map { this.getCoinCellViewModel(from: $0) }
-            let updatedCoinViewModels = page == Constants.firstPage ? coinViewModels : this.currentState.coinViewModels + coinViewModels
+            let newCoinViewModels = coins.map { this.getCoinCellViewModel(from: $0) }
+            let updatedCoinViewModels = this.currentState.coinViewModels + newCoinViewModels
+            var coinsDict = this.currentState.coinsDict
+            coins.forEach { coin in
+              coinsDict[coin.uuid] = coin
+            }
+            let (inviteFriendPosition, coinViewModels) = this.insertInviteFriendIfNecessary(coinViewModels: updatedCoinViewModels)
 
             this.stateDriver.accept(CoinListState(prevState: this.currentState,
                                                   hasNext: hasNext,
                                                   isLoading: false,
                                                   isError: false,
-                                                  coins: updatedCoins,
-                                                  coinViewModels: updatedCoinViewModels))
+                                                  inviteFriendPosition: inviteFriendPosition,
+                                                  coinsDict: coinsDict,
+                                                  coinViewModels: coinViewModels))
           }
         }
       case .failure:
@@ -135,12 +158,38 @@ final class CoinListIntent: CoinListIntentInput {
   private func getCoinCellViewModel(from coin: Coin) -> CoinListCellViewModel {
     let displayedPrice = CurrencyFormatter.getDisplayedPrice(for: coin.price)
     let displayedChange = PriceChangeFormatter.getDisplayedchange(for: coin.change)
-    return CoinListCellViewModel(title: coin.name,
+    return CoinListCellViewModel(type: .coin,
+                                 id: coin.uuid,
+                                 title: coin.name,
                                  symbol: coin.symbol,
                                  logoUrl: coin.iconUrl,
                                  price: displayedPrice,
                                  change: displayedChange.change,
                                  changeColor: displayedChange.color)
+  }
+
+  private func insertInviteFriendIfNecessary(coinViewModels: [CoinListCellViewModel]) -> (inviteFriendPosition: Int, coinViewModels: [CoinListCellViewModel]) {
+    var updatedCoinViewModels = coinViewModels
+    var updatedInviteFriendPosition = currentState.inviteFriendPosition
+    var targetIndex = updatedInviteFriendPosition - 1
+
+    while coinViewModels.indices.contains(targetIndex) {
+      updatedCoinViewModels.insert(getInviteFriendCellViewModel(), at: targetIndex)
+      updatedInviteFriendPosition = updatedInviteFriendPosition * 2
+      targetIndex = updatedInviteFriendPosition - 1
+    }
+    return (updatedInviteFriendPosition, updatedCoinViewModels)
+  }
+
+  private func getInviteFriendCellViewModel() -> CoinListCellViewModel {
+    return CoinListCellViewModel(type: .inviteFriend,
+                                 id: nil,
+                                 title: nil,
+                                 symbol: nil,
+                                 logoUrl: nil,
+                                 price: nil,
+                                 change: nil,
+                                 changeColor: nil)
   }
 
   private func calculateHasNext(with totalCount: Int,

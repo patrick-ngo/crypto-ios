@@ -70,7 +70,7 @@ final class CoinListSearchIntent: CoinListSearchIntentInput {
     searchTextRelay
       .distinctUntilChanged()
       .filter{ $0.isEmpty }
-      .observeOn(scheduler)
+      .observe(on: scheduler)
       .subscribe(onNext: { [weak self] searchText in
         self?.goBack()
       })
@@ -114,7 +114,9 @@ final class CoinListSearchIntent: CoinListSearchIntentInput {
             let displayedPrice = CurrencyFormatter.getDisplayedPrice(for: coin.price)
             let displayedChange = PriceChangeFormatter.getDisplayedchange(for: coin.change)
 
-            return CoinListCellViewModel(title: coin.name,
+            return CoinListCellViewModel(type: .coin,
+                                         id: coin.uuid,
+                                         title: coin.name,
                                          symbol: coin.symbol,
                                          logoUrl: coin.iconUrl,
                                          price: displayedPrice,

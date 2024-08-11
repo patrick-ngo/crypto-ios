@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "FF0109C1-CA46-4FC1-AE89-8D03B60B9301",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "IMAGE_DIFF_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/FailureDiffs"
+      },
+      {
+        "key" : "IS_RECORDING_SNAPSHOTS",
+        "value" : "false"
+      },
+      {
+        "key" : "FB_REFERENCE_IMAGE_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/ReferenceImages"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:crypto-ios.xcodeproj",
+      "identifier" : "C0DFDB8F2C68B9F9008C9E81",
+      "name" : "crypto-iosTests"
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:crypto-ios.xcodeproj",
+        "identifier" : "C0DFDB8F2C68B9F9008C9E81",
+        "name" : "crypto-iosTests"
+      }
+    }
+  ],
+  "version" : 1
+}

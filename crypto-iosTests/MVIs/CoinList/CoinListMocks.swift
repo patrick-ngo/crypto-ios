@@ -47,6 +47,10 @@ enum CoinListMocks {
       updateSearchContainerView = containerView
     }
 
+    var attachShareSheetCalled = false
+    func attachShareSheet() {
+      attachShareSheetCalled = true
+    }
   }
 
   class ViewControllerMock: CoinListViewControllerInput {
@@ -88,6 +92,11 @@ enum CoinListMocks {
       attachSearchViewIfNeededCalled = true
       attachSearchTextRelay = searchTextRelay
       attachSearchContainerView = containerView
+    }
+
+    var attachShareSheetCalled = false
+    func attachShareSheet() {
+      attachShareSheetCalled = true
     }
   }
 }

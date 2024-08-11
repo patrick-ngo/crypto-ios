@@ -29,7 +29,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../crypto-ios.xctestplan"
+            reference = "container:../crypto-ios.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:crypto-ios/TestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -54,6 +57,165 @@
                BlueprintName = "crypto-iosUITests"
                ReferencedContainer = "container:crypto-ios.xcodeproj">
             </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C0DFDB8F2C68B9F9008C9E81"
+               BuildableName = "crypto-iosTests.xctest"
+               BlueprintName = "crypto-iosTests"
+               ReferencedContainer = "container:crypto-ios.xcodeproj">
+            </BuildableReference>
+            <SelectedTests>
+               <Test
+                  Identifier = "CoinDetailCoordinatorTests/testFinish()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailCoordinatorTests/testStart()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailIntentTests/testGetCoin()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailIntentTests/testGoBack()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailIntentTests/testGoToWebsite()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailIntentTests/testUpdate()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailViewSnapshotTests/testCoinDetailView_With_Details()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailViewSnapshotTests/testCoinDetailView_With_InitialState()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailViewTests/testBackButtonTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailViewTests/testGoToWebsite()">
+               </Test>
+               <Test
+                  Identifier = "CoinDetailViewTests/testOnViewDidLoad()">
+               </Test>
+               <Test
+                  Identifier = "CoinListCoordinatorTests/testAttachSearchViewIfNeeded()">
+               </Test>
+               <Test
+                  Identifier = "CoinListCoordinatorTests/testAttachSearchViewIfNeeded_When_SearchViewAlreadyShown()">
+               </Test>
+               <Test
+                  Identifier = "CoinListCoordinatorTests/testFinish()">
+               </Test>
+               <Test
+                  Identifier = "CoinListCoordinatorTests/testGoToMovieDetail()">
+               </Test>
+               <Test
+                  Identifier = "CoinListCoordinatorTests/testStart()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testGetCoins()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testGetMoreCoins()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testGoToCoinDetailCalled()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testGoToCoinDetailCalled_When_LessThan4Coins()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testGoToTopCoinDetailCalled()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testUpdate()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testUpdateSearch()">
+               </Test>
+               <Test
+                  Identifier = "CoinListIntentTests/testUpdateSearch_When_SearchTextEmpty()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchCoordinatorTests/testFinish()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchCoordinatorTests/testGoToMovieDetail()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchCoordinatorTests/testStart()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchIntentTests/testGetCoins()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchIntentTests/testGetMoreCoins()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchIntentTests/testGoToCoinDetailCalled()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchIntentTests/testUpdate()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewSnapshotTests/testCoinDetailView_With_Details()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewSnapshotTests/testCoinDetailView_With_InitialState()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewTests/testOnCoinCellTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewTests/testOnEndOfListReached()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewTests/testOnRefreshPulled()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewTests/testOnRetryButtonTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinListSearchViewTests/testOnViewAttached()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewSnapshotTests/testCoinDetailView_With_Details()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewSnapshotTests/testCoinDetailView_With_InitialState()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnCoinCellTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnEndOfListReached()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnRefreshPulled()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnRetryButtonTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnSearchTextChanged()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testOnTopCoinCellTapped()">
+               </Test>
+               <Test
+                  Identifier = "CoinListViewTests/testViewDidLoad()">
+               </Test>
+               <Test
+                  Identifier = "crypto_iosTests/testExample()">
+               </Test>
+               <Test
+                  Identifier = "crypto_iosTests/testPerformanceExample()">
+               </Test>
+            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>

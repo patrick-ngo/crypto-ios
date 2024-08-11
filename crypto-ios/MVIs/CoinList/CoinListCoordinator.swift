@@ -12,6 +12,7 @@ protocol CoinListCoordinatorInput: Coordinator {
   func goToCoinDetail(with movie: Coin)
   func attachSearchViewIfNeeded(with searchTextRelay: ReadonlyBehaviorRelay<String>,
                                 containerView: UIView)
+  func attachShareSheet()
 }
 
 final class CoinListCoordinator: CoinListCoordinatorInput {
@@ -61,4 +62,14 @@ final class CoinListCoordinator: CoinListCoordinatorInput {
     coinListSearchCoordinator.start()
     childCoordinators.append(coinListSearchCoordinator)
   }
+
+  func attachShareSheet() {
+    let textToShare = "Check out my awesome crypto app!"
+    let urlToShare = URL(string: "https://www.linkedin.com/in/patngo")!
+    let items: [Any] = [textToShare, urlToShare]
+    let activityViewController = UIActivityViewController(activityItems: items, 
+                                                          applicationActivities: nil)
+    navigationController.present(activityViewController, animated: true, completion: nil)
+  }
 }
+

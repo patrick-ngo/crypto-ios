@@ -27,6 +27,7 @@ extension UIColor {
     static let grey = UIColor(hex: 0xF9F9F9)
     static let white = UIColor(hex: 0xFFFFFF)
     static let searchGrey = UIColor(hex: 0xEEEEEE)
+    static let blue = UIColor(hex: 0xC5E6FF)
   }
 
   convenience init(hexString: String) {
